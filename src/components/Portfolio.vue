@@ -3,15 +3,18 @@
 
     <v-data-table :headers="headers" :items="userStocks" :loading="dataLoading">
       <template v-slot:item.amount="{ item }">
-        {{item.purchaseQuantity * item.currentPrice}}
+        {{item.purchaseQuantity * item.currentPrice | currencyFilter}}
       </template>
+      <template v-slot:item.currentPrice="{ item }">{{item.currentPrice | currencyFilter}}</template>
+      <template v-slot:item.highestToday="{ item }">{{item.highestToday | currencyFilter}}</template>
+      <template v-slot:item.lowestToday="{ item }">{{item.lowestToday | currencyFilter}}</template>
       <template v-slot:item.action="{ item }">
         <v-btn class="success" outlined dark small @click="sellStock(item)">Sell</v-btn>
       </template>
       <template v-slot:body.append v-if="userStocks.length">
         <tr style="color: teal; font-weight: bolder">
           <td>Summary</td>
-          <td>-</td> <td>-</td> <td>-</td> <td>{{ totalAmount }}</td>
+          <td>-</td> <td>-</td> <td>-</td> <td>{{ totalAmount | currencyFilter}}</td>
           <td>-</td> <td>-</td><td>-</td>
         </tr>
       </template>

@@ -8,8 +8,9 @@
       <template v-slot:item.operation="{ item }">
         <v-chip :color="item.operation===1?'primary':'secondary'">{{item.operation === 1 ? 'Buy' : 'Sell'}}</v-chip>
       </template>
+      <template v-slot:item.currentPrice="{ item }">{{item.currentPrice | currencyFilter}}</template>
       <template v-slot:item.amount="{ item }">
-        {{item.transactionQty * item.currentPrice}}
+        {{item.transactionQty * item.currentPrice | currencyFilter}}
       </template>
     </v-data-table>
 

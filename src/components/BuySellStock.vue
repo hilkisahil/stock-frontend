@@ -14,15 +14,15 @@
               </v-col>
               <v-col cols="6">
                 <label class="text-uppercase grey--text font-weight-bold">Current Price: </label>
-                <span class="field-value"> ₹ {{stock.currentPrice}} </span>
+                <span class="field-value"> {{stock.currentPrice | currencyFilter}} </span>
               </v-col>
               <v-col cols="6">
                 <label class="text-uppercase grey--text font-weight-bold">Highest Today: </label>
-                <span class="field-value"> ₹ {{stock.highestToday}} </span>
+                <span class="field-value"> {{stock.highestToday | currencyFilter}} </span>
               </v-col>
               <v-col cols="6">
                 <label class="text-uppercase grey--text font-weight-bold">Lowest Today: </label>
-                <span class="field-value"> ₹ {{stock.lowestToday}} </span>
+                <span class="field-value"> {{stock.lowestToday | currencyFilter}} </span>
               </v-col>
               <v-col cols="4">
                 <label class="text-uppercase grey--text font-weight-bold">Quantity*</label>
@@ -31,7 +31,7 @@
               </v-col>
               <v-col cols="12" class="pt-0 mt-0 mb-4">
                 <label class="text-uppercase grey--text font-weight-bold">Total Amount: </label>
-                <span class="field-value"> ₹ {{form.quantity * form.currentPrice}} </span>
+                <span class="field-value"> {{form.quantity * form.currentPrice | currencyFilter}} </span>
               </v-col>
             </v-row>
           </v-form>

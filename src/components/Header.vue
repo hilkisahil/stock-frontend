@@ -11,7 +11,7 @@
       </v-avatar>
       <div class="user-detail">
         <div>{{ user.name }}</div>
-        <div>Balance: ₹ {{balance}}
+        <div>Balance: {{balance | currencyFilter}}
           <v-btn icon x-small @click="getUserBalance" class="green lighten-2 ml-2" :loading="balanceLoading">
             <v-icon>refresh</v-icon></v-btn></div>
       </div>

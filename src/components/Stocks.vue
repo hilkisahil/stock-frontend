@@ -2,6 +2,9 @@
 <div>
 
   <v-data-table :headers="headers" :items="stocks" :loading="dataLoading">
+    <template v-slot:item.currentPrice="{ item }">{{item.currentPrice | currencyFilter}}</template>
+    <template v-slot:item.highestToday="{ item }">{{item.highestToday | currencyFilter}}</template>
+    <template v-slot:item.lowestToday="{ item }">{{item.lowestToday | currencyFilter}}</template>
     <template v-slot:item.action="{ item }">
       <v-btn class="success" outlined dark small @click="buyStock(item)">Buy</v-btn>
     </template>

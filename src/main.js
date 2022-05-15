@@ -6,6 +6,10 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
+Vue.filter('currencyFilter', function (val) {
+  return  ![null, undefined].includes(val)?val.toLocaleString('en-IN', { minimumFractionDigits:0, style: 'currency', currency: 'INR' }).replace(/₹/g, '₹ '):'₹ 0'
+})
+
 new Vue({
   router,
   store,
