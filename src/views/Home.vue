@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-row>
+      <div class="col-7 text-center fs-24 mt-6">Private Banking</div>
+      <div class="col-5">
+        <login @showToast="showToast"/>
+      </div>
+    </v-row>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
+import Login from "@/components/Login";
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  components: {Login},
+  methods: {
+    showToast(val) {
+      this.$emit('showToast', val)
+    }
   }
 }
 </script>

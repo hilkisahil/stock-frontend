@@ -1,32 +1,44 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-app>
+      <v-header ref="v-header"></v-header>
+      <router-view class="routed-view" @showToast="showToast" @getBalance="getBalance"/>
+      <Snackbar :toaster="toaster"/>
+    </v-app>
   </div>
 </template>
-
+<script>
+import Header from "@/components/Header";
+import Snackbar from "@/components/utility/Snackbar";
+export default {
+  name: 'App',
+  components: {Snackbar, vHeader: Header},
+  data() {
+    return{
+      toaster: {}
+    }
+  },
+  methods: {
+    showToast(val) {
+      this.toaster = val;
+    },
+    getBalance() {
+      this.$refs['v-header'].getUserBalance();
+    }
+  }
+}
+</script>
 <style lang="scss">
+@import "../src/style/main.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.routed-view {
+  margin-top: 62px;
+}
+.h-pointer{
+  cursor: pointer;
 }
 </style>
